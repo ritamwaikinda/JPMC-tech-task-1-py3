@@ -22,20 +22,35 @@ class ClientTest(unittest.TestCase):
 
 
   """ ------------ Add more unit tests ------------ """
-
+#test to see if priceA is zero
 def test_getRatio_priceAEqualToZero(self)
-prices {
-  'ABC': 0,
-  'DEF': 121.68
-}
-  self.assertEqual(getRatio(prices['ABC'], prices['DEF']), 0, 'No value listed for primary stock, generating...'))
+  price_a: 0
+  price_b: 121.68
+  self.assertEqual(getRatio(price_a, price_b), 0))
 
+#test to see if priceB is zero
 def test_getRatio_priceBEqualToZero(self)
-prices {
-  'ABC': 120.48,
-  'DEF': 0
-}
-  self.assertEqual(getRatio(prices['ABC'], prices['DEF'] ), None, 'No value listed for comparison stock, generating...')
+  price_a: 120.48
+  price_b: 0
+  self.assertIsNone(getRatio(price_a, price_b))
+
+#testing to see when Price A Company's stock outperforms Price B Company's.
+def test_getRatio_greaterThan1(self):
+  price_a = 385.14
+  price_b = 154.82
+  self.assertGreater(getRatio(price_a, price_b), 1)
+
+#testing to see when Price A Company's stock underperforms Price B Company's.
+def test_getRatio_lessThan1(self):
+  price_a = 167.97
+  price_b = 344.69
+  self.assertLess(getRatio(price_a, price_b), 1)
+
+#testing to see when the two stock prices are equal.
+def test_getRatio_isExactlyOne(self):
+  price_a = 229.37
+  price_b = 229.37
+  self.assertEqual(getRatio(price_a, price_b), 1)
 
 
 if __name__ == '__main__':
